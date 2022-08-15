@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<style>
+    body{
+        height: 200vh;
+    }
+  div[class="content"]{
+      width: 500px;
+      height: 500px;
+      background: red;
+      margin-top: 200px;
+  }
+</style>
+<body onresize="changeSize()">
+  <div class="content"></div>
+<button type="button" onclick="change()">321231</button>
+</body>
+<script>
+ let changeSize = function() {
+     console.log("change")
+ }
+ let div = document.querySelector(".content");
+ const config = {
+     attributes: true,
+     childList: true,
+     characterData: true,
+     subtree: true,
+     attributeFilter:['style']
+ };
+ const  MutationObserver = window.MutationObserver || window.webkitMutationObserver ||window.MozMutationObserver;
+ const observer = new MutationObserver(function(mutations) {
+     console.log(mutations)
+     }
+   );
+ observer.observe(div,config)
+ function change(){
+     console.log(div.getBoundingClientRect().top)
+     div.style.width = div.getBoundingClientRect().width - 10 + 'px'
+ }
+
+</script>
+</html>

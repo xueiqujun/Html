@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    img[date-src]{
+        width: 100vw;
+        height: 800px;
+    }
+</style>
+<body>
+<div id="content">
+  <img src="" alt="" date-src="../images/1.jpg">
+  <img src="" alt="" date-src="../images/2.jpg">
+  <img src="" alt="" date-src="../images/3.jpg">
+  <img src="" alt="" date-src="../images/4.jpg">
+  <img src="" alt="" date-src="../images/11.jpg">
+  <img src="" alt="" date-src="../images/12.jpg">
+</div>
+</body>
+<script>
+    let images =document.querySelectorAll('img');
+    window.onload = () => {
+        images.forEach((image)=>{
+            if (image.getBoundingClientRect().top < window.innerHeight) {
+                image.setAttribute('src',image.getAttribute('date-src'))
+            }
+            console.log(image.offsetTop)
+        })
+    }
+    window.addEventListener('scroll',(e)=>{
+    images.forEach((image)=>{
+        if (image.getBoundingClientRect().top < window.innerHeight) {
+            image.setAttribute('src',image.getAttribute('date-src'))
+        }
+        console.log(image)
+    })
+},{})
+    console.log(document.documentElement.clientHeight,window.innerHeight,document.body)
+</script>
+</html>

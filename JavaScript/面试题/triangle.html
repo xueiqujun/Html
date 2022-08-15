@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    .triangle1{
+        width: 0;
+        height: 0;
+        border-left: transparent solid 50px;
+        border-bottom: orange solid 100px;
+        border-right: transparent solid 50px;
+    }
+    .triangle2{
+        width: 100px;
+        aspect-ratio: 1;
+        background: skyblue;
+        clip-path:  polygon(50% 0%,0% 100%, 100% 100%);
+    }
+</style>
+<body>
+triangle
+<div class="fun">
+    <div class="triangle1"></div>
+    <div class="triangle2"></div>
+</div>
+</body>
+</html>

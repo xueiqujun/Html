@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    let a = {
+        n :1
+    }
+   /* a[Symbol.toPrimitive]=function() {
+        return this.n++;
+    }*/
+    a.valueOf = function() {
+        return this.n++
+    }
+
+    if(a==1 && a==2 && a==3){
+        console.log("yes")
+    }
+</script>
+</html>

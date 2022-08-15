@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script>
+    /*插入排序*/
+   function insertionSort(arr){
+       let temp = [];
+       temp.push(arr[0]);
+       for (let i = 1; i < arr.length ; i++) {;
+           temp.push(arr[i]);
+           for (let j = temp.length-1; j>0; j--) {
+               if (temp[j]<temp[j-1]){
+                   let x = temp[j];
+                   temp[j] = temp[j-1];
+                   temp[j-1] = x;
+               }else{
+                   break;
+               }
+           }
+       }
+      return temp;
+   }
+
+   /*归并排序*/
+
+    function mergeSort(arr){
+        if (arr.length<=1){
+            return arr;
+        }
+
+        let mid = Math.floor(arr.length/2);
+        let left = arr.slice(0,mid);
+        let right = arr.slice(mid);
+        return  merge(mergeSort(left),mergeSort(right));
+    }
+
+    function merge(left,right){
+        let result=[];
+        while (left.length >0 && right.length>0) {
+            if (left[0]>right[0]){
+                result.push(right.shift());
+            }else{
+                result.push(left.shift())
+            }
+        }
+        while(left.length>0) result.push(left.shift());
+        while(right.length>0)result.push(right.shift());
+        return result;
+    }
+
+    console.log([].shift());
+</script>
+<body>
+</body>
+</html>

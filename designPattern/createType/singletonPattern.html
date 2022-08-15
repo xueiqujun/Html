@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    class Employees{
+        constructor(name) {
+            this.name = name;
+        }
+    }
+    class Singleton{
+        constructor() {
+
+        }
+    }
+    Singleton.getSingleton =(function () {
+        let obj;
+       return function (){
+               if(obj){
+                   return obj;
+               }else{
+                   obj = new Employees("xue");
+                   return obj;
+               }
+       }
+    })()
+    let obj1 =  Singleton.getSingleton();
+    let obj2 =  Singleton.getSingleton();
+    console.log(obj1 ==obj2);
+
+</script>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="father">
+        <div id="son">1233</div>
+    </div>
+</body>
+<script>
+    function sum([...args]){
+        let sum = 0 ;
+        console.log(args)
+        for (const arg of args) {
+            sum += arg;
+        }
+        return sum
+    }
+    function currying(...args){
+        let arr = [];
+        arr=args.slice(0)
+        console.log(sum(arr))
+        return function inner(...ars){
+            arr.push(...ars);
+            console.log(sum(arr))
+            return inner.bind(this);
+        }
+    }
+    let f1 = currying(1);
+    let f2 =f1(2);
+    let f3 = f2(4)
+</script>
+</html>

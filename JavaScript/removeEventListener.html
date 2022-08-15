@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  <div>7777777</div>
+</body>
+<script>
+    let fun1  =function() {
+        console.log("fun1")
+    }
+    let fun2  =function() {
+        console.log("fun2")
+    }
+    let div =document.getElementsByTagName("div")[0];
+    console.log(div)
+ div.addEventListener('click',fun1);
+ div.addEventListener('click',fun2)
+    setTimeout(()=>{
+        div.removeEventListener('click',fun1)
+    },10000)
+
+</script>
+</html>

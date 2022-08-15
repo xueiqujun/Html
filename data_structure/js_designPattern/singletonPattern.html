@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    function process(state) {
+        this.state = state;
+    }
+    const singleton = (function() {
+        function processManger() {
+            this.numProcess = 0
+        }
+        let pManger;
+
+        function createProcessManger() {
+            pManger = new processManger();
+            return pManger;
+        }
+        return {
+            getProcessManger: () => {
+                if (!pManger) pManger = createProcessManger()
+                return pManger;
+            }
+        }
+    })();
+
+
+    const processManger1 = singleton.getProcessManger();
+    const processManger2 = singleton.getProcessManger();
+    console.log(processManger1 == processManger2);
+
+    function test() {
+        this.state = true;
+    }
+    console.log(new test() == new test());
+</script>
+
+</html>

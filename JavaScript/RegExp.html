@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>$Title$</title>
+</head>
+<body>
+<div id="app"></div>
+</body>
+<script>
+    let gcd=function (a, b) {
+        if (a<b) {
+            let temp = a ;
+            a=b;
+            b=temp;
+        }
+        let r = a % b;
+        if (r == 0) {
+            return b;
+        }
+        return gcd(b, r);
+    }
+    console.log(gcd(4,6))
+    function lcd(a,b) {
+        return(a*b)/gcd(a,b);
+    }
+    console.log(lcd(4,6))
+</script>
+</html>

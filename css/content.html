@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<style>
+  body{
+      counter-reset: my-counter;
+  }
+  h2::before{
+      counter-increment:my-counter ;
+      content: "section"  counter(my-counter) ".";
+  }
+</style>
+<body>
+
+<h2>HTML Tutorial</h2>
+<h2>CSS Tutorial</h2>
+<h2>JavaScript Tutorial</h2>
+<h2>Bootstrap Tutorial</h2>
+<h2>SQL Tutorial</h2>
+<h2>PHP Tutorial</h2>
+</body>
+</html>

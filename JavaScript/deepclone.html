@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+</body>
+<script>
+    function deepClone(o) {
+        if(typeof o!="object" ||o==null){
+            return o;
+        }
+        let result ;
+       result=  o instanceof Array ? [] :{};
+        let keys= o.keys();
+        for (const key of keys) {
+            result[key] = deepClone(o[key]);
+        }
+        return o;
+    }
+
+
+    console.log(deepClone(null))
+</script>
+</html>

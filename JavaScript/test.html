@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    *{
+        margin: 0;
+    }
+    .container{
+        width: 100vw;
+        height: 100vh;
+        background: skyblue;
+        display: flex;
+        flex-wrap: nowrap;
+    }
+    .container > div{
+        width:  2000px;
+        height: 200px;
+        border: red solid 2px;
+    }
+</style>
+<body>
+<div class="container">
+    <div></div>
+    <div></div>
+    <div></div>
+</div>
+</body>
+<script>
+const  howSum = (targetSums,numbers,memo={})=>{
+    console.log(memo)
+    if(targetSums in memo) return  memo[targetSums];
+    if(targetSums ===0) return [];
+    if(targetSums <0) return  null;
+    for (const num of numbers) {
+        const remainder = targetSums - num;
+        const remainderResult = howSum(remainder,numbers,memo);
+        if(remainderResult!=null){
+            memo[targetSums]=[...remainderResult,num];
+            return  memo[targetSums];
+
+        }
+    }
+    memo[targetSums]=null;
+    return  null;
+}
+ const bestSum=(targetSum,numbers,memo={})=>{
+    if(targetSum in memo) return memo[targetSum];
+    if(targetSum ===  0) return  [];
+    if(targetSum <0 )return  null;
+    let shortCombination = null;
+     for (const num of numbers) {
+         const remainder = targetSum -num;
+         const remainderResult = bestSum(remainder,numbers,memo);
+        if(remainderResult!=null){
+            const combination = [...remainderResult,num];
+            if(shortCombination==null ||shortCombination.length>combination.length){
+                shortCombination = combination;
+            }
+        }
+     }
+     memo[targetSum] = shortCombination;
+     return  shortCombination;
+ }
+ const  allConstruct = (target,wordBank)=>{
+    if(target==="") return [[]];
+    const result = [];
+     for (const word of wordBank) {
+         if(target.indexOf(word)==0){
+             const  suffix = target.slice(word.length);
+             const  suffixWays = allConstruct(suffix,wordBank);
+             const  targetWays = suffixWays.map(way=>[word,...way]);
+             console.log(targetWays)
+             result.push(...targetWays);
+         }
+     }
+     return result;
+ }
+console.log(allConstruct('purple',['purp','p','ur','le','purpl']))
+</script>
+</html>

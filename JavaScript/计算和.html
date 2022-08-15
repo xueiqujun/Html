@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    let foo = function(...arguments) {
+        if(!Array.isArray(foo.arr)){
+             foo.arr = [] ;
+        }
+        foo.arr = [...foo.arr,...arguments];
+        return foo;
+    }
+    Function.prototype.getSum = function () {
+
+        return  foo.arr.reduce((prev,curr)=>{
+            return prev + curr;
+        },0)
+    }
+   let s = foo(1,2,3)(4).getSum();
+    console.log(s)
+</script>
+</html>

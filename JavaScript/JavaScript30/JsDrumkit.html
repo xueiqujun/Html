@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    html{
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        background:url(http://i.imgur.com/b9r5sEL.jpg) bottom center;
+        background-size: cover;
+        height: 100vh;
+        font-family: sans-serif;
+        font-size: 10px;
+    }
+    .keys{
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        flex: 1;
+    }
+    .key{
+        width: 100px;
+        background-color: rgba(0,0,0,.4);
+        color:white;
+        text-align: center;
+        border-radius: 5px;
+        border: solid 4px black;
+        font-size: 1.5rem;
+        padding: 1rem .5rem;
+        margin: 1rem;
+        transition:  0.2s;
+    }
+    .sound{
+        display: block;
+        color:#ffc600;
+        font-size: 1.2rem;
+        text-transform: uppercase;
+        font-family:monospace;
+    }
+    .playing {
+        transform:scale(1.1);
+        border-color:#ffc600;
+        box-shadow: 0 0 10px #ffc600;
+    }
+
+</style>
+<body>
+<div class="keys">
+    <div class="key" data-key="65"><kbd>A</kbd><span class="sound">clap</span></div>
+    <div class="key" data-key="83"><kbd>S</kbd><span class="sound">hihat</span></div>
+    <div class="key" data-key="68"><kbd>D</kbd><span class="sound">kick</span></div>
+    <div class="key" data-key="70"><kbd>F</kbd><span class="sound">openhat</span></div>
+    <div class="key" data-key="71"><kbd>G</kbd><span class="sound">boom</span></div>
+    <div class="key" data-key="72"><kbd>H</kbd><span class="sound">ride</span></div>
+    <div class="key" data-key="74"><kbd>J</kbd><span class="sound">snare</span></div>
+    <div class="key" data-key="75"><kbd>K</kbd><span class="sound">tom</span></div>
+    <div class="key" data-key="76"><kbd>L</kbd><span class="sound">tink</span></div>
+</div>
+<audio data-key="65" src="./JavaScript30-master/01%20-%20JavaScript%20Drum%20Kit/sounds/clap.wav"></audio>
+<audio data-key="83" src="./JavaScript30-master/01%20-%20JavaScript%20Drum%20Kit/sounds/hihat.wav"></audio>
+<audio data-key="68" src="./JavaScript30-master/01%20-%20JavaScript%20Drum%20Kit/sounds/kick.wav"></audio>
+<audio data-key="70" src="./JavaScript30-master/01%20-%20JavaScript%20Drum%20Kit/sounds/openhat.wav"></audio>
+<audio data-key="71" src="./JavaScript30-master/01%20-%20JavaScript%20Drum%20Kit/sounds/boom.wav"></audio>
+<audio data-key="72" src="./JavaScript30-master/01%20-%20JavaScript%20Drum%20Kit/sounds/ride.wav"></audio>
+<audio data-key="74" src="./JavaScript30-master/01%20-%20JavaScript%20Drum%20Kit/sounds/snare.wav"></audio>
+<audio data-key="75" src="./JavaScript30-master/01%20-%20JavaScript%20Drum%20Kit/sounds/tom.wav"></audio>
+<audio data-key="76" src="./JavaScript30-master/01%20-%20JavaScript%20Drum%20Kit/sounds/tink.wav"></audio>
+</body>
+<script>
+    function removeTransition(event) {
+        console.log(event.target)
+        if (event.propertyName !== 'transform') return; // 过滤其中一种事件
+        event.target.classList.remove('playing'); // 移除高亮的样式
+
+    }
+
+    const keys = Array.from(document.querySelectorAll('.key')); // 获取页面所有按钮元素
+    keys.forEach(key => key.addEventListener('transitionend', removeTransition)); // 添加 transition 事件监听
+
+    window.addEventListener("keydown",(event)=>{
+      const audio = document.querySelector(`audio[data-key="${event.keyCode}"]`); // 根据触发按键的键码，获取对应音频
+      const key = document.querySelector(`div[data-key="${event.keyCode}"]`); // 获取页面对应按钮 DIV 元素
+      if (!audio) return;
+      key.classList.add('playing');
+      audio.currentTime = 0;
+      audio.play();
+  })
+</script>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    let flatArr=[
+        {id : 1,title : "标题1",parent_id:0},
+        {id : 2,title : "标题2",parent_id:0},
+        {id : 3,title : "标题3",parent_id:2},
+        {id : 4,title : "标题4",parent_id:3},
+        {id : 5,title : "标题5",parent_id:4},
+        {id : 6,title : "标题6",parent_id:2},
+    ];
+    
+    function coverList(list) {
+       const result = [];
+       const map=list.reduce((pre,cur)=>{
+          pre[cur.id]=cur;
+          return pre;
+       },{});
+        for (const item of list) {
+            if (item.parent_id===0){
+                result.push(item)
+                continue;
+            }
+
+            if (map.hasOwnProperty(item.parent_id)){
+                const parent = map[item.parent_id];
+                parent.children = parent.children ||[];
+                parent.children.push(item);
+            }
+        }
+        return result;
+    }
+
+</script>
+</html>

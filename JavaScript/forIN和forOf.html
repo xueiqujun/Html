@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    button{
+        color:magenta;
+        transition:color 200ms ease-in 50ms;
+    }
+    button:hover{
+        color: orange;
+        transition: color 200ms ease-out 50ms;
+    }
+</style>
+<body>
+<div id="content">
+    <button>
+        确认
+    </button>
+</div>
+</body>
+<script>
+    function Proto() {
+        this.name="xueQiuJun";
+        this.age="26"
+    }
+
+
+    console.log(Proto.prototype.constructor)
+    let proto = new Proto();
+    proto[Symbol.iterator]= function* (){
+        let properties =Object.keys(this);
+        for (const property of properties) {
+          yield [property,this[property]]
+        }
+    }
+
+
+
+    let p1 =new Promise((resolve, reject)=>{
+        reject(77)
+    });
+    p1.then((resolve,reject,res)=>{
+        console.log(res)
+    },(err)=>{
+        console.log(err)
+       throw new Error("sdaasda")
+    }).then((res)=>{
+        console.log(res);
+    },(err)=>{
+        console.log(err)
+    })
+</script>
+</html>

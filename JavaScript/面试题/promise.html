@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script >
+    let p =new Promise((resolve, reject)=>{
+        console.log("a");
+        resolve("p2");
+    })
+    p.then((data)=>{
+        console.log(data)
+    })
+    console.log("cx")
+</script>
+</html>

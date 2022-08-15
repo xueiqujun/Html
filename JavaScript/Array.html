@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> example</title>
+</head>
+<style >
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    img{
+        width: 100vw;
+        height: 400px;
+        
+
+    }
+
+
+
+
+</style>
+<body>
+<div id="app">
+
+</div>  
+</body >
+<script >
+    let arrays = [9,7,8,6,5,6,385,21,96,39];
+    Array.prototype.swap=function (originIndex,targetIndex){
+        let temp = this[originIndex];
+        this[originIndex]=this[targetIndex];
+        this[targetIndex]=temp;
+    }
+    /*冒泡排序*/
+    function bubbleSort(arr) {
+        for (let i = 0; i <arr.length-1 ; i++) {
+            for (let j = 0; j < arr.length-1; j++) {
+                if (arr[j]>arr[j+1])
+                    arr.swap(j,j+1);
+            }
+        }
+        return arr;
+    }
+    /*选择排序*/
+    function selectSort(arr) {
+        let min;
+        for (let i = 0; i <arr.length-1; i++) {
+           min = i ;
+            for (let j = i+1; j <arr.length ; j++) {
+                 if (arr[min] > arr[j]) {
+                     min = j;
+
+                 }
+
+            }
+            arr.swap(i,min)
+        }
+
+        return arr;
+    }
+
+    /*插入排序*/
+    function insertionSort(arr){
+        for (let i = 1; i <arr.length; i++) {
+            for (let j = i-1; arr[j]>arr[j+1] && j>=0 ; j--) {
+                arr.swap(j,j+1);
+            }
+        }
+        return arr;
+    }
+    /*希尔排序*/
+    function shellSort(arr){
+        for (let i = Math.floor((0+arr.length)/2); i >=1 ; i=Math.floor(i/2)) {
+            for (let j = i; j <arr.length; j++) {
+                while (arr[j-i]>arr[j]){
+                    arr.swap(j - i,j);
+                    j = j - 1;
+                }
+            }
+        }
+        return arr;
+    }
+    /*快速排序*/
+    function quicklySort(arr) {
+        if (arr.length<1)return arr;
+     let left = [];
+     let right = [];
+     let middle =Math.floor((arr.length)/2);
+     let pivot =arr.splice(middle,1);
+        for (let i = 0; i <arr.length ; i++) {
+            if (arr[i]<pivot[0])
+                left.push(arr[i])
+            else
+                right.push(arr[i]);
+        }
+        return quicklySort(left).concat(pivot,quicklySort(right));
+    }
+</script>
+ </html>

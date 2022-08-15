@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    body{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100vw;
+        height: 100vh;
+        color:white;
+        flex-direction: column;
+    }
+  .btn{
+      width: 150px;
+      height: 50px;
+      border-radius: 40px;
+      background-color: orange;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      transition: all 0.5s;
+  }
+  .btn:hover{
+      transform:  translateY(-10px);
+  }
+  .btn::after{
+      width: 100%;
+      height: 100%;
+      background: orange;
+      content: "";
+      border-radius: 40px;
+      z-index: -1;
+      display: inline-block;
+      position: absolute;
+      inset: 0;
+      transition: all 0.5s;
+  }
+  .btn:hover::after{
+      transform: scale(2);
+      opacity: 0;
+  }
+  .main_title{
+      color: black;
+      font-weight: 700;
+      font-size: 2rem;
+      letter-spacing: 10px;
+      word-spacing: 15px;
+      transition: all  10s;
+      animation-name: moveLeft;
+      animation-iteration-count: 100;
+      animation-timing-function:ease-in ;
+  }
+  @keyframes moveLeft{
+      0%{
+          transform: translate(-500px);
+          color: red;
+      }
+      100%{
+          transform:  translate(0px);
+          color: yellow;
+      }
+  }
+
+</style>
+<body>
+       <button class="btn">456</button>
+    <div class="main_title">
+        我是一只羊
+    </div>
+</body>
+</html>

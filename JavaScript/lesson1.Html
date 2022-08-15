@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+<body>
+    <div id="app">
+        <base_checkbox :title.sync="title">
+        <template v-slot:he="date">
+            {{date.son_Date}}
+        </template>
+        </base_checkbox>
+        
+    </div>
+</body>
+
+<script>
+    const base_checkbox={
+  props: {
+   title:String
+  },
+  data(){
+    return{
+      son_Date:"myson"  
+    }
+  },
+  methods:{
+    update(){
+     this.$emit('update:title',"西悉尼")
+    }
+  },
+  template: `
+  <div>
+        <div @click="update()">
+            {{title}}
+        </div>
+        <slot v-bind:son_Date="son_Date" name="he"></slot>
+        </div>
+  `
+}
+ new Vue({
+  el: '#app',
+  components: {
+    base_checkbox
+  },
+  data:{
+    title:"7777",
+    father_Date:"sdadad"
+  },
+  computed:{
+      getVal(){
+          return this.title;
+      }
+  },
+  methods:{
+    
+  }
+})
+
+</script>
+</html>

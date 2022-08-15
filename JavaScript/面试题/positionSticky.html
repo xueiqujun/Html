@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        :root{
+            --nav-height:70px;
+            --page-height:calc(100vh - var(--nav-height));
+        }
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        body{
+            font-size: 36px;
+            letter-spacing: 4px;
+       }
+        .container{
+            height: var(--page-height);
+            background: #ececec;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-shadow: 5px 5px 10px  rgba(0,0,0,0.3);
+        }
+        .nav{
+            height: var(--nav-height);
+            background: #FFFFFF;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            font-size: 22px;
+            font-weight: normal;
+            box-shadow: 0 0 15px  rgba(0,0,0,0.3);
+        }
+        .nav div:hover{
+            color: #51c4e9;
+        }
+        .nav div{
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+        }
+        .sub-page{
+            height: var(--page-height);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #ececec;
+            text-shadow:  5px 5px 10px  rgba(0,0,0,0.3);
+        }
+        .nav{
+            position: sticky;
+            top: 0;
+        }
+    </style>
+</head>
+<body>
+    <section class="container">
+        <h1>BlackPink</h1>
+    </section>
+    <section class="sub-container">
+        <section class="nav">
+            <div>Home</div>
+            <div>Study</div>
+            <div>About</div>
+            <div>Help</div>
+        </section>
+
+        <section class="sub-page">
+            <h1>Lisa</h1>
+        </section>
+        <section class="sub-page">
+            <h1>Jisoo</h1>
+        </section>
+        <section class="sub-page">
+            <h1>Jennie</h1>
+        </section>
+        <section class="sub-page">
+            <h1>Rose</h1>
+        </section>
+
+    </section>
+</body>
+</html>

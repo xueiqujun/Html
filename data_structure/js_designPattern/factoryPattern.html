@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    function testEmployee(name) {
+        this.type = "Tester";
+        this.name = name;
+    }
+
+    function developerEmployee(name) {
+        this.type = "Developer";
+        this.name = name;
+    }
+
+
+    function factoryPattern() {
+        this.create = (name, type) => {
+            switch (type) {
+                case "Tester":
+                    return new testEmployee(name)
+                    break;
+                case "Developer":
+                    return new developerEmployee(name)
+            }
+        }
+    }
+    const employees = [];
+</script>
+
+</html>
